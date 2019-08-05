@@ -1,6 +1,6 @@
 ﻿<Page 
     xmlns:uc="using:PixelContainerSample.UserControls"  
-    xmlns:my="using:SamBlanchard.UI.Panels" 
+    xmlns:my="using:SamuelBlanchard.UI.Panels" 
     x:Class="PixelContainerSample.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <my:PixelContainer Source="Assets/Mario.png" MinHeight="500">
+    <my:PixelContainer ClipImageToBounds="True" Source="Assets/Mario.png" MinHeight="500">
         <Rectangle x:Name="RectMario" my:Pixel.X="1491" my:Pixel.Y="972" my:Pixel.Width="270" my:Pixel.Height="336" Fill="Transparent" PointerEntered="Rect_PointerEntered" PointerExited="Rect_PointerExited"></Rectangle>
         <uc:Card x:Name="CardMario" Visibility="Collapsed" my:Pixel.X="1600" my:Pixel.Y="900" my:Pixel.Origin="0,1" CharacterName="MARIO" Strength="JUMP" GoodOrBadGuy="GOOD" />
         

@@ -14,3 +14,5 @@ In this example, the Pixel Container show the image "Mario.png" then add a Butto
 For more examples and a complete description of PixelContainer, follow this link :
 
 http://samuelblanchard.com/2019/08/01/donner-vie-a-vos-images-avec-pixelcontainer
+
+Compatibility : UWP/WPF

@@ -16,3 +16,6 @@ For more examples and a complete description of PixelContainer, follow this link
 http://samuelblanchard.com/2019/08/01/donner-vie-a-vos-images-avec-pixelcontainer
 
 Compatibility : UWP/WPF
+
+An example of PixelContainer with an image and XAML controls as children. You can see how the Stretch attribute change the image size and proportion but not the position (and the size for the button) of controls.   
+https://www.youtube.com/watch?v=5LI1B96tCyk

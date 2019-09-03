@@ -38,13 +38,13 @@ namespace SamuelBlanchard.UI.Panels
         {
             get;
             private set;
-        }
+        } = -1;
 
         public double ImageHeight
         {
             get;
             private set;
-        }
+        } = -1;
 
         public bool AutoApplyLayoutStretchToChild
         {
@@ -89,15 +89,17 @@ namespace SamuelBlanchard.UI.Panels
         {
             this.PixelWidth = -1;
             this.PixelHeight = -1;
-            this.ImageWidth = -1;
-            this.ImageHeight = -1;
         }
 
         public bool IsReadyForLayout
         {
             get
             {
-                return this.PixelWidth != -1 && this.PixelHeight != -1 && this.ImageWidth != -1 && this.ImageHeight != -1;
+                bool isReady = this.PixelWidth != -1 && this.PixelHeight != -1 && this.ImageWidth != -1 && this.ImageHeight != -1;
+
+                Debug.WriteLine("IsReady=" + isReady);
+
+                return isReady;
             }
         }
 
@@ -399,8 +401,12 @@ namespace SamuelBlanchard.UI.Panels
 
         protected override Size ArrangeOverride(Size finalSize)
         {
+            Debug.WriteLine("Arrange?");
+
             if (IsReadyForLayout)
             {
+                Debug.WriteLine("Arrange Ready");
+
                 var imageWidth = this.ImageWidth;
                 var imageHeight = this.ImageHeight;
 

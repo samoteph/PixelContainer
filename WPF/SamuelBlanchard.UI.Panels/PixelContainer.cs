@@ -60,9 +60,9 @@ namespace SamuelBlanchard.UI.Panels
 
         // Using a DependencyProperty as the backing store for Source.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register("Source", typeof(ImageSource), typeof(PixelContainer), new PropertyMetadata(null, OnImageChange));
+            DependencyProperty.Register("Source", typeof(ImageSource), typeof(PixelContainer), new PropertyMetadata(null, OnSourceChange));
 
-        private static void OnImageChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnSourceChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var me = d as PixelContainer;
 #if UWP
@@ -78,6 +78,13 @@ namespace SamuelBlanchard.UI.Panels
 
             me.ChangeImageSource(newSource, oldSource);
 #endif
+            
+            // C'est le cas par exemple d'un WriteablBitmap (qui est forcement deja chargé)
+            if (newSource == null)
+            {
+                var newBitmapSource = e.NewValue as BitmapSource;
+                me.BitmapOpened(newBitmapSource);
+            }
         }
 #if UWP
         private void ChangeImageSource(BitmapImage newBitmapImage, BitmapImage oldBitmapImage)
@@ -91,10 +98,7 @@ namespace SamuelBlanchard.UI.Panels
 
             if(oldBitmapImage != null)
             {
-                if (oldBitmapImage.PixelWidth == 0 && oldBitmapImage.PixelHeight == 0)
-                {
-                    oldBitmapImage.ImageOpened -= BitmapImage_ImageOpened;
-                }
+                oldBitmapImage.ImageOpened -= BitmapImage_ImageOpened;
             }
 
             if (newBitmapImage != null)
@@ -128,10 +132,7 @@ namespace SamuelBlanchard.UI.Panels
 
             if (oldBitmapImage != null)
             {
-                if (oldBitmapImage.PixelWidth == 0 && oldBitmapImage.PixelHeight == 0)
-                {
-                    oldBitmapImage.DownloadCompleted -= NewBitmapImage_DownloadCompleted;
-                }
+                oldBitmapImage.DownloadCompleted -= NewBitmapImage_DownloadCompleted;
             }
 
             if (newBitmapImage != null)
@@ -282,8 +283,6 @@ namespace SamuelBlanchard.UI.Panels
             return child;
         }
 #endif
-
-
 
         public bool ClipImageToBounds
         {

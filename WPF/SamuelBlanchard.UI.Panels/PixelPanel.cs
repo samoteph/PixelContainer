@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Media.Imaging;
 #endif
 
 #if WPF
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;

@@ -80,6 +80,11 @@ namespace SamuelBlanchard.UI.Panels
 
         public static double GetX(DependencyObject target)
         {
+            if (target == null)
+            {
+                return 0;
+            }
+
             return (double)target.GetValue(XProperty);
         }
 
@@ -121,6 +126,11 @@ namespace SamuelBlanchard.UI.Panels
 
         public static double GetY(DependencyObject target)
         {
+            if (target == null)
+            {
+                return 0;
+            }
+
             return (double)target.GetValue(YProperty);
         }
 
@@ -170,6 +180,11 @@ namespace SamuelBlanchard.UI.Panels
 
         public static double GetWidth(DependencyObject target)
         {
+            if(target == null)
+            {
+                return 0;
+            }
+
             return (double)target.GetValue(WidthProperty);
         }
 
@@ -219,6 +234,11 @@ namespace SamuelBlanchard.UI.Panels
 
         public static double GetHeight(DependencyObject target)
         {
+            if (target == null)
+            {
+                return 0;
+            }
+
             return (double)target.GetValue(HeightProperty);
         }
 
